@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  store-app:
+    image: store-app:0.1.0
+    ports:
+    - "4201:4200"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4200"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+  store-app-prod:
+    image: store-app:1.0.0
+    ports:
+    - "8080:80"
+    build:
+      context: .
+      dockerfile: Dockerfile.multistage
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
