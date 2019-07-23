@@ -29,7 +29,12 @@ docker build -t docker101:dev .
 
 To run the image:
 ```bash
-docker run -p 4201:4200 --rm docker101:dev
+docker run -p 4201:4200 --rm docker101:dev docker101
+```
+
+To run the image with volumes:
+```bash
+docker run -p 4201:4200 --rm -v $(pwd):/code docker101:dev docker101
 ```
 
 See the app running:
@@ -49,7 +54,7 @@ docker build -f Dockerfile.multistage -t docker101:prod .
 
 To run the image:
 ```bash
-docker run -p 8080:80 --rm docker101:prod
+docker run -p 8080:80 --rm docker101:prod docker101
 ```
 
 See the app running:
