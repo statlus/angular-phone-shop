@@ -1,12 +1,13 @@
 # base image
-FROM node:10.16.0
+FROM node:10.16.0-alpine
 
 # set working directory
 WORKDIR /code
 
 # install and cache app dependencies
 COPY package.json /code/package.json
-RUN npm install && \
+COPY package-lock.json /code/package-lock.json
+RUN npm ci && \ 
     npm install -g @angular/cli@7.0.7
 
 # add app
