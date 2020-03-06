@@ -29,12 +29,12 @@ docker build -t docker101:dev .
 
 To run the image:
 ```bash
-docker run -p 4201:4200 --name docker101-dev --rm docker101:dev
+docker run -d -p 4201:4200 --name docker101-dev --rm docker101:dev
 ```
 
 To run the image with volumes:
 ```bash
-docker run -p 4201:4200 --name docker101-dev --rm -v $(pwd):/code docker101:dev
+docker run -d -p 4201:4200 --name docker101-dev --rm -v $(pwd):/code docker101:dev
 ```
 
 See the app running:
@@ -54,7 +54,7 @@ docker build -f Dockerfile.multistage -t docker101:prod .
 
 To run the image:
 ```bash
-docker run -p 8080:80 --name docker101-prod --rm docker101:prod
+docker run -d -p 8080:80 --name docker101-prod --rm docker101:prod
 ```
 
 See the app running:
@@ -71,7 +71,7 @@ Just make sure you have the following installed:
 
 To use docker-compose.yml:
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 Once everything is running you should be able to access both containers in your browser:
